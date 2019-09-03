@@ -1,0 +1,43 @@
+version: '3.5'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/rails/Dockerfile
+      args:
+# set your application name
+        - APP_NAME=study__multi_queue_active_job
+    volumes:
+      - .:/mnt/study__multi_queue_active_job
+      - bundle_config:/usr/local/bundle
+    command: bin/rails s -b '0.0.0.0' -p 3000
+    environment:
+# change to the valid password. (see MYSQL_ROOT_PASSWORD)
+      DB_PASSWORD: 'password'
+      DB_HOST: db
+# For DEBUG
+    ports:
+      - '3010:3000'
+    depends_on:
+      - db
+  db:
+    image: mariadb:10.4.6
+    volumes:
+      - mysql_data:/var/lib/mysql
+    restart: always
+    environment:
+# change to the valid password. (see DB_PASSWORD)
+      MYSQL_ROOT_PASSWORD: 'password'
+  webserver:
+    image: nginx:1.17.1
+    volumes:
+      - ./docker/nginx/files/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - app
+    ports:
+      - '80:80'
+volumes:
+  bundle_config:
+    driver: local
+  mysql_data:
+    driver: local
