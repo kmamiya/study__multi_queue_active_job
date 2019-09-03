@@ -10,7 +10,7 @@ services:
     volumes:
       - .:/mnt/study__multi_queue_active_job
       - bundle_config:/usr/local/bundle
-    command: bin/rails s -b '0.0.0.0' -p 3000
+    command: bash docker/rails/cmd.sh
     environment:
 # change to the valid password. (see MYSQL_ROOT_PASSWORD)
       DB_PASSWORD: 'password'
