@@ -1,1 +1,7 @@
-てすと
+<p>ジョブを投げる</p>
+
+<%= form_tag contents_path do %>
+  <label>キュー選択</label>
+  <%= select_tag :queue, options_for_select(['queue1', 'queue2']) %>
+  <%= submit_tag %>
+<% end %>
