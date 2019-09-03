@@ -24,10 +24,8 @@ gem 'wow-rails'
 gem 'nicescroll-rails'
 gem 'placeholder-gem'
 gem 'momentjs-rails'
-# gem 'zeroclipboard-rails' (IE8非対応のため解決策が出るまではコメントアウト)
 gem 'axios_rails'
 gem 'es6-promise-rails'
-# gem 'browserify-rails' requireに近い形が現状実現できているので、一先ず除外
 
 # File Upload
 gem 'remotipart', '~> 1.2'
@@ -112,11 +110,4 @@ group :development, :test do
   gem 'simplecov', require: false
   gem 'webmock', require: false
   gem 'dotenv-rails'
-end
-
-group :production, :staging do
-  # for EngineYard
-  # gem 'unicorn'
-  # for Elastic BeanStalk
-  gem 'puma'
 end
