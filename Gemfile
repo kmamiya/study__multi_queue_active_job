@@ -41,7 +41,7 @@ gem 'daemons'
 gem 'config'
 
 # Auth
-gem 'devise', '~> 4.4.0'
+gem 'devise', '~> 4.7.1'
 
 # Scraping
 gem 'nokogiri'
